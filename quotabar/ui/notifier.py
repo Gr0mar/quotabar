@@ -8,7 +8,7 @@ than failing politely. Nothing can be caught around that, so the framework is no
 imported at all.
 
 The trade-off is visible to users: alerts are attributed to Script Editor, and macOS
-must be allowing its notifications for them to appear. The README says so.
+must be allowing its notifications for them to appear. The README and docs/internals.md say so.
 """
 
 from __future__ import annotations

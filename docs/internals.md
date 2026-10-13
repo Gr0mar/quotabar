@@ -11,7 +11,7 @@
 
 If neither answers, the header falls back to a local count of the tokens billed in the last five hours and says so. The endpoint rate-limits, so it is polled every five minutes and doubles the interval after each failure, up to half-hourly; a reading older than five minutes is shown with its timestamp rather than as current.
 
-## The statusline hook
+## Optional: the statusline hook
 
 Claude Code pipes a JSON blob into your statusline command on every turn, and for subscribers it contains the quota windows. `scripts/statusline-limits.sh` saves them and then hands the untouched input to whatever statusline command you already use:
 
@@ -44,7 +44,7 @@ A line appears only when the readings span at least eight minutes, the window is
 
 The first launch parses every log once and caches the day-level rollup in `~/Library/Caches/com.github.gr0mar.QuotaBar`. After that each pass reads only the bytes a log has grown by, tracked per file, and a half-written trailing line is left for the next pass rather than dropped. Idle cost is one `stat` per log every five seconds; the directory tree itself is re-walked at most once a minute.
 
-## Why the app does not run from the checkout
+## What gets installed where
 
 `setup.sh` calls `install.sh`, which puts the runtime under `~/Library/Application Support/QuotaBar`. That split from the checkout is deliberate: an app launched from Finder cannot read `~/Desktop` or `~/Documents`, so a bundle pointing back at a checkout there would die on startup. The bundle carries its own copy of PyObjC and runs on the system `/usr/bin/python3` (1.4 MB download, about 5 MB on disk).
 

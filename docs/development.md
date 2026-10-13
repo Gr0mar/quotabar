@@ -21,4 +21,3 @@ Rebuilding the animation needs Pillow (`pip install -r requirements-dev.txt`); n
 
 `quotabar/` splits into pure logic (`parser`, `pricing`, `aggregate`, `scanner`, `live`, `limits`, `projection`, `alerts`, `formatting`, `tokens`, `store`, `identity`) and the AppKit layer (`ui/`). Only `ui/` imports AppKit; everything else is testable without a display. The store owns one background thread that publishes an immutable snapshot, and the UI reads that snapshot once per layout pass — so a repaint can never mix values from two different scans.
 
-PRs welcome; run the tests before opening one.
